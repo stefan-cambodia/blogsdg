@@ -33,8 +33,14 @@ Le nom : **Chantrea Systems**. « Chantrea » veut dire « clair de lune » en k
 
 Pour créer la société, il me faut une adresse de siège avec un bail. Or je vis à l'hôtel : je n'ai ni adresse officielle ni bail à mon nom.
 
-- Source officielle : [À COMPLÉTER PAR STEFAN : lien vers le texte qui fixe cette exigence]
-- Coût : [À COMPLÉTER PAR STEFAN]
+**La piste que j'ai trouvée :** l'établissement où je loge propose aussi des bungalows en location longue durée, avec un bail. En louant l'un d'eux, j'aurais à la fois un logement et une adresse officielle, celle de l'établissement.
+
+Ce qu'il me reste à vérifier :
+
+- qu'une adresse obtenue de cette façon est bien acceptée pour le siège d'une société : [À COMPLÉTER PAR STEFAN]
+- la durée minimale du bail : [À COMPLÉTER PAR STEFAN]
+- le loyer : [À COMPLÉTER PAR STEFAN]
+- Source officielle sur l'exigence d'un bail : [À COMPLÉTER PAR STEFAN : lien vers le texte qui fixe cette exigence]
 
 ### 2. Le calendrier : la société, puis le permis de travail, avant mars
 
@@ -67,7 +73,7 @@ Voici les étapes à venir. Chacune aura son ou ses articles, avec les coûts, l
 
 1. **Vérifier le nom au registre du ministère du Commerce.** S'assurer que « Chantrea Systems » est disponible, sur le [portail d'enregistrement des entreprises du ministère du Commerce](https://www.businessregistration.moc.gov.kh/).
 2. **Acheter les noms de domaine.**
-3. **Trouver un local ou une domiciliation**, avec un bail pour l'adresse du siège.
+3. **Trouver un local ou une domiciliation**, avec un bail pour l’adresse du siège. Piste en cours : un bungalow en location longue durée là où je loge.
 4. **Réunir les documents :** passeport, photos, bail, statuts en khmer et en anglais.
 5. **Choisir l'agent et le comptable.**
 6. **Créer la société.**
