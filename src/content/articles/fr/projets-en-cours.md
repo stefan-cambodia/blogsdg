@@ -6,7 +6,7 @@ etape: 0
 statut: en cours
 resume: "Quatre projets avancent en parallèle de la création de la société : un portail immobilier, une plateforme nautique, une reconstitution d'Angkor à conduire et un terminal Bitcoin. Où en est chacun, et ce qui n'est pas fait."
 tags: [projets, démarrage]
-brouillon: true
+brouillon: false
 ---
 
 Créer la société n'est qu'une moitié du travail. L'autre moitié, c'est ce qu'elle aura à montrer. Pendant que les démarches avancent, je construis quatre projets. Cet article les présente par ce qu'ils font pour la personne qui s'en sert, avec leur état réel au moment où j'écris, y compris ce qui manque.
