@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { getArticles } from '../articles';
+import { href, t, tagSlug, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  tag: string;
+}
+
+const { lang, tag } = Astro.props;
+const ui = t(lang);
+const slug = tagSlug(tag);
+const articles = (await getArticles(lang)).filter((a) => a.data.tags.some((x) => tagSlug(x) === slug));
+const title = `${ui.tagged} #${tag}`;
+---
+
+<Base lang={lang} title={title}>
+  <h1>{title}</h1>
+  <ul class="post-list">
+    {articles.map((article) => <PostCard article={article} lang={lang} />)}
+  </ul>
+  <p><a href={href(lang, 'tags')}>← {ui.allTags}</a></p>
+</Base>

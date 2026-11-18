@@ -1,0 +1,25 @@
+---
+import { articleHref, type Article } from '../articles';
+import { formatDate, t, type Lang } from '../i18n';
+import StatusBadge from './StatusBadge.astro';
+
+interface Props {
+  article: Article;
+  lang: Lang;
+}
+
+const { article, lang } = Astro.props;
+const ui = t(lang);
+const d = article.data;
+---
+
+<li class="post-card">
+  <div class="meta">
+    <span>{ui.step} {d.etape}</span>
+    <StatusBadge statut={d.statut} lang={lang} />
+    {d.brouillon && <span class="badge draft">{ui.draft}</span>}
+    <time datetime={d.date.toISOString().slice(0, 10)}>{formatDate(d.date, lang)}</time>
+  </div>
+  <h3><a href={articleHref(article)}>{d.titre}</a></h3>
+  <p>{d.resume}</p>
+</li>

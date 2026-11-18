@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import { articleHref, getArticles, groupBySteps } from '../articles';
+import { alternates, formatDate, t, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const ui = t(lang);
+const steps = groupBySteps(await getArticles(lang));
+---
+
+<Base lang={lang} title={ui.nav.journey} alternates={alternates('journey')}>
+  <h1>{ui.nav.journey}</h1>
+  <p class="intro">{ui.journeyIntro}</p>
+  {steps.length === 0 && <p>{ui.noArticles}</p>}
+  <ol class="steps">
+    {
+      steps.map((step) => (
+        <li class={step.termine ? 'done' : 'progress'}>
+          <h2>
+            {ui.step} {step.etape}{' '}
+            <StatusBadge statut={step.termine ? 'terminé' : 'en cours'} lang={lang} />
+          </h2>
+          <ul>
+            {step.articles.map((a) => (
+              <li>
+                <a href={articleHref(a)}>{a.data.titre}</a>{' '}
+                <span class="meta" style="display:inline">
+                  · {formatDate(a.data.date, lang)}
+                  {a.data.coutUSD !== undefined && <> · {a.data.coutUSD} USD</>}
+                  {a.data.delai && <> · {a.data.delai}</>}
+                  {a.data.brouillon && <> · {ui.draft}</>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ol>
+</Base>

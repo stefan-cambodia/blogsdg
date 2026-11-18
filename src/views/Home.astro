@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import PostCard from '../components/PostCard.astro';
+import { getArticles } from '../articles';
+import { DEFAULT_LANG, LOCALES, alternates, href, t, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const ui = t(lang);
+const latest = (await getArticles(lang)).slice(0, 5);
+---
+
+<Base lang={lang} alternates={alternates()}>
+  <h1>{ui.siteTitle}</h1>
+  <p class="intro">{ui.siteDescription}</p>
+
+  <h2>{ui.latest}</h2>
+  {
+    latest.length > 0 ? (
+      <ul class="post-list">
+        {latest.map((article) => (
+          <PostCard article={article} lang={lang} />
+        ))}
+      </ul>
+    ) : (
+      <p>
+        {ui.noArticles}
+        {lang !== DEFAULT_LANG && (
+          <>
+            {' '}
+            {ui.noArticlesOtherLang}{' '}
+            <a href={href(DEFAULT_LANG)} hreflang={DEFAULT_LANG}>
+              {LOCALES[DEFAULT_LANG].label}
+            </a>
+          </>
+        )}
+      </p>
+    )
+  }
+  {latest.length > 0 && <p><a href={href(lang, 'journey')}>{ui.allArticles} →</a></p>}
+</Base>

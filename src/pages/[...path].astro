@@ -1,0 +1,57 @@
+---
+// Route unique : génère toutes les pages du site pour chaque langue de LANGS.
+// Français à la racine (/parcours/), autres langues préfixées (/en/journey/).
+import { articleSlug, getArticles, getTranslations, type Article } from '../articles';
+import { LANGS, routeParam, tagSlug, type Lang } from '../i18n';
+import Home from '../views/Home.astro';
+import Journey from '../views/Journey.astro';
+import About from '../views/About.astro';
+import TagIndex from '../views/TagIndex.astro';
+import TagPage from '../views/TagPage.astro';
+import ArticlePage from '../views/ArticlePage.astro';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const lang of LANGS) {
+    const articles = await getArticles(lang);
+    const p = (path: string) => (path === '' ? undefined : path);
+
+    paths.push({ params: { path: p(routeParam(lang)) }, props: { view: 'home', lang } });
+    paths.push({ params: { path: routeParam(lang, 'journey') }, props: { view: 'journey', lang } });
+    paths.push({ params: { path: routeParam(lang, 'about') }, props: { view: 'about', lang } });
+    paths.push({ params: { path: routeParam(lang, 'tags') }, props: { view: 'tags', lang } });
+
+    const tags = new Map<string, string>();
+    for (const a of articles) for (const tag of a.data.tags) tags.set(tagSlug(tag), tag);
+    for (const [slug, tag] of tags) {
+      paths.push({ params: { path: routeParam(lang, 'tags', slug) }, props: { view: 'tag', lang, tag } });
+    }
+
+    for (const article of articles) {
+      const translations = await getTranslations(article);
+      paths.push({
+        params: { path: routeParam(lang, 'articles', articleSlug(article)) },
+        props: { view: 'article', lang, article, translations },
+      });
+    }
+  }
+  return paths;
+}
+
+type Props = {
+  view: 'home' | 'journey' | 'about' | 'tags' | 'tag' | 'article';
+  lang: Lang;
+  tag?: string;
+  article?: Article;
+  translations?: Article[];
+};
+
+const { view, lang, tag, article, translations = [] } = Astro.props;
+---
+
+{view === 'home' && <Home lang={lang} />}
+{view === 'journey' && <Journey lang={lang} />}
+{view === 'about' && <About lang={lang} />}
+{view === 'tags' && <TagIndex lang={lang} />}
+{view === 'tag' && tag && <TagPage lang={lang} tag={tag} />}
+{view === 'article' && article && <ArticlePage article={article} translations={translations} />}

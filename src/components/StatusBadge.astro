@@ -1,0 +1,12 @@
+---
+import { t, type Lang } from '../i18n';
+
+interface Props {
+  statut: 'en cours' | 'terminé';
+  lang: Lang;
+}
+
+const { statut, lang } = Astro.props;
+---
+
+<span class={`badge ${statut === 'terminé' ? 'done' : 'progress'}`}>{t(lang).status[statut]}</span>

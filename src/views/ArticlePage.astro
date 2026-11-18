@@ -1,0 +1,81 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import StatusBadge from '../components/StatusBadge.astro';
+import TagList from '../components/TagList.astro';
+import { articleHref, type Article } from '../articles';
+import { LOCALES, formatDate, t, type Lang } from '../i18n';
+
+interface Props {
+  article: Article;
+  translations: Article[];
+}
+
+const { article, translations } = Astro.props;
+const d = article.data;
+const lang = d.langue as Lang;
+const ui = t(lang);
+const { Content } = await render(article);
+const dateIso = d.date.toISOString().slice(0, 10);
+// Seules les langues qui ont une interface sont liées.
+const others = translations
+  .filter((tr) => tr.data.langue in LOCALES)
+  .map((tr) => ({ lang: tr.data.langue as Lang, url: articleHref(tr) }));
+const alternates = others.length > 0 ? [{ lang, url: articleHref(article) }, ...others] : [];
+---
+
+<Base lang={lang} title={d.titre} description={d.resume} type="article" published={d.date} tags={d.tags} alternates={alternates}>
+  <article>
+    <header class="article-header">
+      <div class="meta">
+        <span>{ui.step} {d.etape}</span>
+        <StatusBadge statut={d.statut} lang={lang} />
+        {d.brouillon && <span class="badge draft">{ui.draft}</span>}
+        <time datetime={dateIso}>{formatDate(d.date, lang)}</time>
+      </div>
+      <h1>{d.titre}</h1>
+      <p class="intro">{d.resume}</p>
+      {
+        (d.coutUSD !== undefined || d.delai) && (
+          <dl class="facts">
+            {d.coutUSD !== undefined && (
+              <div>
+                <dt>{ui.cost}</dt>
+                <dd>{d.coutUSD.toLocaleString(LOCALES[lang].locale)} USD</dd>
+              </div>
+            )}
+            {d.delai && (
+              <div>
+                <dt>{ui.duration}</dt>
+                <dd>{d.delai}</dd>
+              </div>
+            )}
+          </dl>
+        )
+      }
+    </header>
+
+    <div class="prose">
+      <Content />
+    </div>
+
+    <TagList tags={d.tags} lang={lang} />
+
+    {
+      others.length > 0 && (
+        <p class="translations">
+          {others.map((o) => (
+            <a href={o.url} hreflang={o.lang} lang={o.lang}>
+              {ui.readIn} {LOCALES[o.lang].label}
+            </a>
+          ))}
+        </p>
+      )
+    }
+
+    <aside class="disclaimer" role="note">
+      <p>{ui.disclaimer}</p>
+      <p class="written">{ui.writtenOn} <time datetime={dateIso}>{formatDate(d.date, lang)}</time></p>
+    </aside>
+  </article>
+</Base>

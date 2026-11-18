@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { alternates, t, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const ui = t(lang);
+// Contenu : src/content/pages/<langue>/a-propos.md
+const [page] = await getCollection('pages', (p) => p.data.langue === lang && p.id.endsWith('a-propos'));
+const { Content } = page ? await render(page) : { Content: null };
+---
+
+<Base lang={lang} title={page?.data.titre ?? ui.nav.about} description={page?.data.resume} alternates={alternates('about')}>
+  <h1>{page?.data.titre ?? ui.nav.about}</h1>
+  <div class="prose">{Content && <Content />}</div>
+</Base>

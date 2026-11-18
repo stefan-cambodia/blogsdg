@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { getArticles } from '../articles';
+import { alternates, href, t, tagSlug, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const ui = t(lang);
+const counts = new Map<string, number>();
+for (const a of await getArticles(lang)) for (const tag of a.data.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+const tags = [...counts].sort(([a], [b]) => a.localeCompare(b, lang));
+---
+
+<Base lang={lang} title={ui.allTags} alternates={alternates('tags')}>
+  <h1>{ui.allTags}</h1>
+  {tags.length === 0 && <p>{ui.noArticles}</p>}
+  <ul class="tags">
+    {
+      tags.map(([tag, n]) => (
+        <li>
+          <a href={href(lang, 'tags', tagSlug(tag))}>
+            #{tag} ({n})
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Base>
