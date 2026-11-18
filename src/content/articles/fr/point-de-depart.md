@@ -6,7 +6,7 @@ etape: 0
 statut: en cours
 resume: "Où j'en suis avant la moindre démarche : un visa d'affaires valable jusqu'en mars, pas d'adresse officielle, un nom de société et une liste de blocages."
 tags: [démarrage, société, visa, permis de travail]
-brouillon: true
+brouillon: false
 traduction: point-de-depart
 ---
 
