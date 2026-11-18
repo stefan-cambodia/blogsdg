@@ -63,7 +63,8 @@ Pour être honnête dès le départ, voici ce qui me manque au moment où j'écr
 
 - le coût total de la création : [À COMPLÉTER PAR STEFAN] ;
 - le délai réel entre le premier dépôt et le permis de travail : [À COMPLÉTER PAR STEFAN] ;
-- la liste exacte des documents demandés : [À COMPLÉTER PAR STEFAN].
+- la liste exacte des documents demandés : [À COMPLÉTER PAR STEFAN] ;
+- si l'adresse du siège devient publique une fois la société enregistrée. C'est important quand cette adresse est aussi celle où l'on vit. Je poserai la question à l'agent : [À COMPLÉTER PAR STEFAN].
 
 Je compléterai cet article au fur et à mesure, et je noterai ici ce qui a changé.
 
