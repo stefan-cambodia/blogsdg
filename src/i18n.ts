@@ -1,8 +1,8 @@
 // Langues du site et textes de l'interface.
-// Pour ajouter le khmer : ajouter 'km' dans LANGS, remplir UI.km et ROUTES.*.km.
+// Pour ajouter une langue : l'ajouter dans LANGS, LOCALES, ROUTES.* et UI.
 // Toutes les pages sont générées automatiquement pour chaque langue de LANGS.
 
-export const LANGS = ['fr', 'en'] as const;
+export const LANGS = ['fr', 'en', 'km'] as const;
 export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = 'fr';
 
@@ -12,14 +12,15 @@ export const CONTENT_LANGS = ['fr', 'en', 'km'] as const;
 export const LOCALES: Record<Lang, { locale: string; og: string; label: string }> = {
   fr: { locale: 'fr-FR', og: 'fr_FR', label: 'Français' },
   en: { locale: 'en-GB', og: 'en_GB', label: 'English' },
+  km: { locale: 'km-KH', og: 'km_KH', label: 'ខ្មែរ' },
 };
 
-// Segments d'URL traduits. La langue par défaut est à la racine, les autres sous /<lang>/.
+// Segments d'URL traduits (le khmer garde des segments latins, plus lisibles dans une adresse). La langue par défaut est à la racine, les autres sous /<lang>/.
 export const ROUTES = {
-  journey: { fr: 'parcours', en: 'journey' },
-  about: { fr: 'a-propos', en: 'about' },
-  tags: { fr: 'tags', en: 'tags' },
-  articles: { fr: 'articles', en: 'articles' },
+  journey: { fr: 'parcours', en: 'journey', km: 'journey' },
+  about: { fr: 'a-propos', en: 'about', km: 'about' },
+  tags: { fr: 'tags', en: 'tags', km: 'tags' },
+  articles: { fr: 'articles', en: 'articles', km: 'articles' },
 } satisfies Record<string, Record<Lang, string>>;
 export type RouteKey = keyof typeof ROUTES;
 
@@ -75,6 +76,32 @@ export const UI = {
     rss: 'RSS feed',
     footer: 'A personal account, no trackers, no cookies.',
     skip: 'Skip to content',
+  },
+  km: {
+    siteTitle: 'ពីសូន្យទៅ Chantrea',
+    siteDescription:
+      'ដំណើររឿងមួយជំហានម្ដងៗ នៃការបង្កើតក្រុមហ៊ុនព័ត៌មានវិទ្យារបស់ខ្ញុំនៅកម្ពុជា ក្នុងនាមជាជនបរទេសដែលមិនធ្លាប់ធ្វើវាពីមុនមក។',
+    nav: { home: 'ទំព័រដើម', journey: 'ដំណើរ', about: 'អំពីខ្ញុំ', tags: 'ស្លាក' },
+    latest: 'អត្ថបទថ្មីៗ',
+    allArticles: 'ដំណើរទាំងមូល',
+    noArticles: 'មិនទាន់មានអត្ថបទបោះពុម្ពផ្សាយនៅឡើយទេ។',
+    noArticlesOtherLang: 'បច្ចុប្បន្ន អត្ថបទត្រូវបានសរសេរជាភាសាបារាំង៖',
+    step: 'ជំហាន',
+    status: { 'en cours': 'កំពុងដំណើរការ', terminé: 'បានបញ្ចប់' },
+    cost: 'ថ្លៃចំណាយ',
+    duration: 'រយៈពេល',
+    writtenOn: 'សរសេរនៅថ្ងៃទី',
+    draft: 'សេចក្តីព្រាង',
+    tagged: 'អត្ថបទដែលមានស្លាក',
+    allTags: 'ស្លាកទាំងអស់',
+    readIn: 'មានជាភាសា៖',
+    disclaimer:
+      'នេះជាបទពិសោធន៍ផ្ទាល់ខ្លួន មិនមែនជាដំបូន្មានផ្នែកច្បាប់ ឬពន្ធដារទេ។ ច្បាប់អាចផ្លាស់ប្តូរ៖ សូមពិនិត្យជាមួយអ្នកជំនាញដែលមានអាជ្ញាប័ណ្ណ។',
+    journeyIntro:
+      'ជំហាននីមួយៗនៃការបង្កើតក្រុមហ៊ុន តាមលំដាប់។ ជំហានមួយត្រូវបានបញ្ចប់ នៅពេលអត្ថបទទាំងអស់របស់វាបានបញ្ចប់។',
+    rss: 'ព័ត៌មាន RSS',
+    footer: 'ដំណើររឿងផ្ទាល់ខ្លួន គ្មានកម្មវិធីតាមដាន គ្មានខូគី។',
+    skip: 'រំលងទៅខ្លឹមសារ',
   },
 } satisfies Record<Lang, unknown>;
 

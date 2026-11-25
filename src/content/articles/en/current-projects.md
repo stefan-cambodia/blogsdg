@@ -73,7 +73,7 @@ Setting up the company is only half the work. The other half is what it will hav
 
 - The whole area can be explored: 37 × 45 km, from the West Baray to the shore of the Tonlé Sap, through Angkor Thom, Angkor Wat, Siem Reap and Roluos.
 - Nothing is placed by hand: roads, buildings, moats and reservoirs are at their surveyed position.
-- Five vehicles to drive: car, motorbike, scooter, tuk-tuk and trailer.
+- Five vehicles to drive: car, motorbike, scooter, and two kinds of tuk-tuk: the three-wheeled auto-rickshaw and the remorque, a motorbike towing a passenger trailer.
 - **Twenty temples now have their own model**, up from nine on 18 November. Since that date, they are rebuilt from the surveys of the École française d'Extrême-Orient: plans, sections and elevations drawn between 1935 and 1971, whose dimensions are read one by one. Angkor Wat, the eight temple-mountains (Phnom Bakheng, Baksei Chamkrong, Bakong, Pre Rup, East Mebon, Ta Keo, Phimeanakas, Baphuon), Banteay Srei, Thommanon, Chau Say Tevoda, Neak Pean, Banteay Kdei, Prasat Kravan, Prasat Bei and Banteay Samré. The Bayon, Ta Prohm and Preah Khan are started: only a few parts.
 - **Central Siem Reap** looks more like the real town: the old colonial quarter around the Old Market, with its arcaded galleries and colourful façades, lit streets lined with trees, the signs and string lights of Pub Street at night, the pagodas and their stupas, the French administrative quarter with its villas.
 - Villages have their houses on stilts, with hammocks, jars, bamboo fences, cows and chickens.
