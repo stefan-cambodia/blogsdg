@@ -3,6 +3,8 @@
 Blog de Stefan : la création, étape par étape, d'une société IT au Cambodge.
 Site statique Astro, publié sur GitHub Pages : <https://stefan-cambodia.github.io/blogsdg/>
 
+Trois langues : français (à la racine), anglais (`/en/`) et khmer (`/km/`).
+
 Aucun JavaScript envoyé au navigateur, aucun traceur, aucun cookie.
 
 ## Prérequis
@@ -31,7 +33,7 @@ Astro envoie par défaut des statistiques d'usage anonymes pendant le développe
    ---
    titre: "Vérifier le nom de la société au registre"
    date: 2026-11-25          # date de rédaction, affichée dans l'encadré en bas
-   langue: fr                # fr, en (km prévu)
+   langue: fr                # fr, en ou km
    etape: 1                  # numéro d'étape dans le parcours
    statut: en cours          # « en cours » ou « terminé »
    resume: "Une ou deux phrases qui résument l'article."
@@ -60,10 +62,23 @@ Pour retrouver ce qui reste à compléter : `grep -rn "À COMPLÉTER" src/conten
 
 ## Traduire un article
 
-1. Crée la version anglaise dans `src/content/articles/en/` (le nom de fichier peut être différent).
-2. Donne-lui `langue: en` et **la même valeur `traduction:`** que la version française.
+1. Crée la traduction dans `src/content/articles/en/` ou `src/content/articles/km/` (le nom de fichier peut être différent ; jusqu'ici, l'anglais et le khmer utilisent le même).
+2. Donne-lui `langue: en` ou `langue: km` et **la même valeur `traduction:`** que la version française. Ajoute aussi ce champ à la version française s'il n'y est pas.
+3. Remplace `[À COMPLÉTER PAR STEFAN]` par `[TO BE COMPLETED BY STEFAN]`, en anglais comme en khmer, pour pouvoir le retrouver avec `grep`.
 
-Les deux versions se lient alors l'une à l'autre. Un article sans version anglaise n'apparaît pas du tout dans la partie anglaise du site.
+Les versions se lient alors les unes aux autres. Un article sans traduction n'apparaît pas du tout dans la partie du site de cette langue.
+
+### Le khmer
+
+- Les textes khmers sont traduits par Claude. Tant qu'une personne dont le khmer est la langue maternelle ne les a pas relus, chaque page khmère commence par cette note, en italique :
+
+  ```
+  *អត្ថបទនេះត្រូវបានបកប្រែពីភាសាបារាំងដោយបញ្ញាសិប្បនិម្មិត (Claude) ហើយមិនទាន់ត្រូវបានពិនិត្យដោយអ្នកដែលមានភាសាខ្មែរជាភាសាកំណើតនៅឡើយទេ។*
+  ```
+
+  (« Cet article a été traduit du français par une intelligence artificielle (Claude) et n'a pas encore été relu par une personne dont le khmer est la langue maternelle. ») Pour la page À propos, le premier mot est ទំព័រនេះ (« cette page ») au lieu de អត្ថបទនេះ (« cet article »). Une fois la page relue, supprime la note.
+- Les tags khmers doivent être écrits exactement pareil d'un article à l'autre : une seule différence de caractère crée une page de tag séparée. Par exemple, « démarrage » s'écrit ការចាប់ផ្ដើម, avec ដ.
+- Les adresses des pages khmères restent en lettres latines (`/km/articles/starting-point/`).
 
 ## Publier
 
@@ -100,12 +115,12 @@ src/
 public/                        fichiers copiés tels quels (favicon, image de partage)
 ```
 
-## Ajouter le khmer plus tard
+## Ajouter une langue
 
-1. Dans `src/i18n.ts` : ajouter `'km'` à `LANGS`, une entrée `km` dans `LOCALES`, `ROUTES` et `UI`.
-2. Créer `src/content/pages/km/a-propos.md` et les articles dans `src/content/articles/km/`.
+1. Dans `src/i18n.ts` : ajouter son code à `LANGS` (et à `CONTENT_LANGS`), une entrée dans `LOCALES`, `ROUTES` et `UI`.
+2. Créer `src/content/pages/<langue>/a-propos.md` et les articles dans `src/content/articles/<langue>/`.
 
-Toutes les pages (`/km/…`), le flux RSS et le sélecteur de langue suivent automatiquement.
+Toutes les pages (`/<langue>/…`), le flux RSS et le sélecteur de langue suivent automatiquement. Si l'écriture a besoin d'un autre interligne, l'ajouter dans `src/styles/global.css` avec `:lang(<langue>)`, comme pour le khmer.
 
 ## Domaine personnel
 
