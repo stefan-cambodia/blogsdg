@@ -10,7 +10,7 @@ brouillon: false
 traduction: point-25-novembre
 ---
 
-A week after the [starting point](/blogsdg/articles/point-de-depart/) (in French), here is where things stand. One step is stuck: the company's registered address. Everything else is going well, especially the system that will run the company day to day.
+A week after the [starting point](/blogsdg/en/articles/starting-point/), here is where things stand. One step is stuck: the company's registered address. Everything else is going well, especially the system that will run the company day to day.
 
 ## The registered address: no progress
 
