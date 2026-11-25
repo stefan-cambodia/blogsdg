@@ -14,6 +14,8 @@ Most posts are written in French first. Only posts that have been translated app
 
 [TO BE COMPLETED BY STEFAN: your motivation in two or three sentences.]
 
+Each post is written so that other expats can reuse it: clear steps, costs, timelines and documents, and a link to the official source whenever I mention a rule.
+
 ## What this blog is not
 
 It is a personal account, not legal or tax advice. Rules change: check with a licensed professional before you start.
