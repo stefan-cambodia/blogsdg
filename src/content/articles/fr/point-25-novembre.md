@@ -7,6 +7,7 @@ statut: en cours
 resume: "L'adresse du siège n'a pas bougé : festival de l'eau, police occupée. Le reste avance : l'outil de gestion de Chantrea Systems est prêt, en khmer, et attend maintenant la relecture certifiée de ses 700 textes."
 tags: [démarrage, société, adresse, khmer, odoo]
 brouillon: false
+traduction: point-25-novembre
 ---
 
 Une semaine après le [point de départ](/blogsdg/articles/point-de-depart/), voici où j'en suis. Une démarche est bloquée, celle de l'adresse du siège. Le reste avance bien, en particulier l'outil qui fera tourner la société au quotidien.
