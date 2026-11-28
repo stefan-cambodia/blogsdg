@@ -64,10 +64,14 @@ const alternates = others.length > 0 ? [{ lang, url: articleHref(article) }, ...
     {
       others.length > 0 && (
         <p class="translations">
-          {others.map((o) => (
-            <a href={o.url} hreflang={o.lang} lang={o.lang}>
-              {ui.readIn} {LOCALES[o.lang].label}
-            </a>
+          {ui.readIn}{' '}
+          {others.map((o, i) => (
+            <>
+              {i > 0 && ' · '}
+              <a href={o.url} hreflang={o.lang} lang={o.lang}>
+                {LOCALES[o.lang].label}
+              </a>
+            </>
           ))}
         </p>
       )
